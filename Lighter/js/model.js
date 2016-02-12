@@ -23,7 +23,8 @@ var Model = (function () {
 
     Model.prototype.switchColor = function (color) {
         this.lights.forEach(function (item) {
-            item.light = false
+            item.light = false;
+
             if (item.color === color) {
                 item.light = true;
             }

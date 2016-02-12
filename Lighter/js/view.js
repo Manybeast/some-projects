@@ -1,19 +1,15 @@
 var View = (function () {
     function View () {
         console.log('init view');
+
         this.wrapper = $('.wrapper');
-        this.red = $('#red');
-        this.yellow = $('#yellow');
-        this.green = $('#green');
     }
 
     View.prototype.createLight = function (item) {
-
         var defaultTemplate = '<div id="{{id}}" class="{{class}}"></div>',
             template = defaultTemplate.replace('{{id}}', item.color);
 
         template = template.replace('{{class}}', item.light);
-
         this.view = this.view + template;
     };
 
@@ -32,15 +28,13 @@ var View = (function () {
     View.prototype.switchColor = function (handler) {
         var self = this;
 
-            this.wrapper.on('click', function (e) {
-                if($(e.target).attr('id') === 'red') {
-                    handler($(e.target).attr('id'));
-                } else if($(e.target).attr('id') === 'yellow') {
-                    handler($(e.target).attr('id'));
-                } else if($(e.target).attr('id') === 'green') {
-                    handler($(e.target).attr('id'));
-                }
-            });
+        this.wrapper.on('click', function (e) {
+            if ($(e.target).hasClass('wrapper')) {
+                return;
+            }
+
+            handler($(e.target).attr('id'));
+        });
     };
 
     return View;
