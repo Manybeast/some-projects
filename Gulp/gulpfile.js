@@ -12,3 +12,8 @@ gulp.task('css', function () {
         .pipe(concatCss('Styles/public.css'))
         .pipe(gulp.dest('public/'))
 });
+
+gulp.task('clean', function () {
+    return gulp.src('public', {read: false})
+        .pipe(clean());
+  });
