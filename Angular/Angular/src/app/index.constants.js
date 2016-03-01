@@ -3,7 +3,7 @@
   'use strict';
 
   angular
-    .module('angular')
+    .module('levelUpAngular')
     .constant('malarkey', malarkey)
     .constant('moment', moment);
 
