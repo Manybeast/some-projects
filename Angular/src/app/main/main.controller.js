@@ -48,5 +48,13 @@
 
         vm.items.splice(currentIndex, 1);
     };
+
+    vm.completeItem = function (e, id) {
+      var currentIndex = vm.items.indexOf(vm.items.filter(function (item){
+        return item.id === parseInt(id);
+      })[0]);
+
+      vm.items[currentIndex].completed = !vm.items[currentIndex].completed;
+    };
   }
 })();
