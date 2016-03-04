@@ -1,0 +1,20 @@
+<div class="wrapper">
+	<ul>
+		<li><input type="radio" 
+					value = "all"
+					name = "active-filter"
+					class="btn btn-default" 
+					ng-model = "main.activeFilter"/>All</li>
+		<li><input type="radio" 
+					value = "active"
+					name = "active-filter"
+					class="btn btn-default" 
+					ng-model = "main.activeFilter"/>Active</li>
+		<li><input type="radio" 
+					value = "comleted"
+					name = "active-filter"
+					class="btn btn-default" 
+					ng-model = "main.activeFilter"/>Completed</li>
+	</ul>
+	{{main.activeFilter}}
+</div>

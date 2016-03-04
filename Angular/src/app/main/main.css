@@ -1,23 +1,5 @@
 .todo-list {
   width: 500px;
   border: 1px solid grey;
-}
-
-h1 {
-  font-family: Arial, SansSerif, Tahoma;
-  color: red;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  list-style: none;
-}
-
-.output li.true span {
-  color: #d9d9d9;
-  text-decoration: line-through;
+  border-radius: 10px;
 }

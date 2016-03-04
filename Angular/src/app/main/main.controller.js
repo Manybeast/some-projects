@@ -12,6 +12,7 @@
     vm.header = "ToDo List";
     vm.newTodo = null;
     vm.btnText = 'ADD';
+    vm.activeFilter = 'all'
     vm.items = [{
         name: 'First',
         completed: true,
@@ -56,5 +57,9 @@
 
       vm.items[currentIndex].completed = !vm.items[currentIndex].completed;
     };
+
+    // vm.typeOfFilter = function () {
+      
+    // };
   }
 })();
