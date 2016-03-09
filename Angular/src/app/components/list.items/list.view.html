@@ -1,7 +1,11 @@
-<ul>
-  <li class="todo-item form-group" ng-repeat = "item in main.items | filter: 'main.activeFilter'">
-      <input type="checkbox" ng-checked="item.completed" ng-click="main.completeItem($event, item.id)">
-      <span class="todo-item-title" ng-class = "{completed: item.completed}">{{item.name}}</span>
-      <div class="btn btn-danger" ng-click="main.delete($event, item.id)">DELETE</div>
-  </li>
-</ul>
+<section class="main">
+    <input class="toggle-all" type="checkbox">
+    <label for="toggle-all">Mark all as complete</label>
+    <ul class="todo-list">
+        <li class="todo-item" ng-repeat = "item in main.items">
+            <input type="checkbox" class="toggle" ng-checked="item.completed" ng-click="main.completeItem($event, item.id)">
+            <label class="todo-item title" ng-class = "{completed: item.completed}">{{item.name}}</label>
+            <button class="destroy" ng-click="main.delete($event, item.id)"></button>
+        </li>
+    </ul>
+</section>

@@ -1,7 +1,8 @@
-<div class="container todo-list" ng-controller="MainController as main">
+<section class="todoapp" ng-controller="MainController as main">
     <div ng-include = "'app/components/header/header.view.html'"></div>
-    <div class="output">
-      <div ng-include = "'app/components/list.items/list.view.html'"></div>
-    </div>
+    <div ng-include = "'app/components/list.items/list.view.html'"></div>
     <div ng-include = "'app/components/footer/footer.view.html'"></div>
-</div>
+</section>
+<footer class="info">
+    <p>Double-click to edit a todo</p>
+</footer>
