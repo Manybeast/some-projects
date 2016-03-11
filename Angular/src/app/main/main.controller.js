@@ -6,13 +6,14 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController() {
+  function MainController($scope, $filter) {
     var vm = this;
 
-    vm.header = "ToDo List";
+    vm.header = "ToDoList";
     vm.newTodo = null;
     vm.btnText = 'ADD';
-    vm.activeFilter = 'all'
+    vm.activeFilter = {};
+    vm.status = '';
     vm.items = [{
         name: 'First',
         completed: true,
@@ -24,10 +25,20 @@
         id:1
       }];
 
+    $scope.$watch(function () {
+      return vm.items;
+    }, function () {
+      // vm.leftTask = $filter('filter')(vm.items, {completed: false}).length;
+      vm.leftTask = vm.items.filter(function (item) {
+        return !item.completed;
+      }).length;
+      vm.completedCount = vm.items.length - vm.leftTask;
+    }, true);
+
     vm.addItem = function (e) {
       var model = null;
 
-      if (e.keyCode === 13 || e.type === 'click') {
+      if (e.type === 'click' && vm.newTodo !== '') {
         model = {
             name: vm.newTodo,
             completed: false,
@@ -39,7 +50,7 @@
     };
 
     vm.generateId = function () {
-        return Math.floor((1+Math.random())*0x10000);
+        return Math.floor((1 + Math.random()) * 0x10000);
     };
 
     vm.delete = function (e, id) {
@@ -59,7 +70,7 @@
     };
 
     // vm.typeOfFilter = function () {
-      
+
     // };
   }
 })();
