@@ -69,8 +69,32 @@
       vm.items[currentIndex].completed = !vm.items[currentIndex].completed;
     };
 
-    // vm.typeOfFilter = function () {
+    vm.changeFilter = function (filter) {
+      vm.newFilter = filter;
 
-    // };
+      if (vm.newFilter === 'active') {
+        vm.activeFilter = {completed: false};
+        return;
+      }
+      if (vm.newFilter === 'completed') {
+        vm.activeFilter = {completed: true};
+        return;
+      }
+
+      vm.activeFilter = {};
+    }
+
+    vm.clearCompleted = function () {
+      vm.items = vm.items.filter(function (item) {
+        return !item.completed;
+      })
+    };
+
+    vm.toggleAll = function (completed) {
+      vm.items.forEach(function (item) {
+        item.completed = completed;
+      });
+    }
+
   }
 })();
