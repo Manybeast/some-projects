@@ -14,7 +14,7 @@
     vm.btnText = 'ADD';
     vm.activeFilter = {};
     vm.status = '';
-    vm.items = [{
+    vm.items = JSON.parse(localStorage.getItem('ToDoList')) || [{
         name: 'First',
         completed: true,
         id:0
@@ -46,8 +46,15 @@
         };
         vm.items.push(model);
         vm.newTodo = null;
+
+        vm.addToLocalStorage(vm.items);
       }
     };
+
+    vm.addToLocalStorage = function (list) {
+      localStorage.removeItem('ToDoList');
+      localStorage.setItem('ToDoList', JSON.stringify(list));
+    }
 
     vm.generateId = function () {
         return Math.floor((1 + Math.random()) * 0x10000);
@@ -59,6 +66,8 @@
         })[0]);
 
         vm.items.splice(currentIndex, 1);
+
+        vm.addToLocalStorage(vm.items);
     };
 
     vm.completeItem = function (e, id) {
@@ -67,6 +76,8 @@
       })[0]);
 
       vm.items[currentIndex].completed = !vm.items[currentIndex].completed;
+
+      vm.addToLocalStorage(vm.items);
     };
 
     vm.changeFilter = function (filter) {
@@ -88,12 +99,16 @@
       vm.items = vm.items.filter(function (item) {
         return !item.completed;
       })
+
+      vm.addToLocalStorage(vm.items);
     };
 
     vm.toggleAll = function (completed) {
       vm.items.forEach(function (item) {
         item.completed = completed;
       });
+
+      vm.addToLocalStorage(vm.items);
     }
 
   }
